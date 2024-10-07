@@ -19,13 +19,14 @@ jobs:
           git config user.email "<>"
       - name: Create artifact
         run : |
-          zip src/wp-content/plugins/cp-pepper 
+          cd src/wp-content/plugins/
+          zip -r cp-pepper.zip cp-pepper 
           ls
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
             name: cp-pepper
-            path: cp-pepper.zip
+            path: src/wp-content/plugins/cp-pepper.zip
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
